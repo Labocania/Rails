@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :microposts, only: [:create, :destroy]
 
 =begin
-                Prefix Verb   URI Pattern                             Controller#Action
+                 Prefix Verb   URI Pattern                             Controller#Action
                    root GET    /                                       static_pages#home
            sessions_new GET    /sessions/new(.:format)                 sessions#new
                    help GET    /help(.:format)                         static_pages#help
@@ -38,5 +39,7 @@ edit_account_activation GET    /account_activations/:id/edit(.:format) account_a
     edit_password_reset GET    /password_resets/:id/edit(.:format)     password_resets#edit
          password_reset PATCH  /password_resets/:id(.:format)          password_resets#update
                         PUT    /password_resets/:id(.:format)          password_resets#update
+             microposts POST   /microposts(.:format)                   microposts#create
+              micropost DELETE /microposts/:id(.:format)               microposts#destroy
 =end
 end
